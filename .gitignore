@@ -1,2 +1,4 @@
 src/metacard
 *.pdf
+
+.DS_Store
