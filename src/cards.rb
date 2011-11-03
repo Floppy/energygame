@@ -1,30 +1,32 @@
 $game.define_cards {
   # Fossil Fuels
-  fossil {
-    name "Overseas"
-    units 32
-    start true
-  }
-  fossil {
-    name "Coal"
-    units 30
-    start true
-  }
-  fossil {
-    name "Gas"
-    units 48
-    start true
-  }
-  fossil {
-    name "Oil"
-    units 44
-    start true
-  }
-  fossil {
-    name "Overseas"
-    units 44
-    start true
-  }
+  2.times do
+    fossil {
+      name "Overseas"
+      units 32
+      start true
+    }
+    fossil {
+      name "Coal"
+      units 30
+      start true
+    }
+    fossil {
+      name "Gas"
+      units 48
+      start true
+    }
+    fossil {
+      name "Oil"
+      units 44
+      start true
+    }
+    fossil {
+      name "Overseas"
+      units 44
+      start true
+    }
+  end
   # Sustainable Power
   supply {
     name "Tidal"
@@ -35,7 +37,7 @@ $game.define_cards {
     land 0
     coast 0
   }
-  2.times do 
+  2.times do
     supply {
       name "Nuclear"
       units 5
@@ -47,7 +49,7 @@ $game.define_cards {
       start true
     }
   end
-  2.times do 
+  2.times do
     supply {
       name "Nuclear"
       units 1
@@ -161,54 +163,56 @@ $game.define_cards {
     }
   end
   # Starting demand
-  demand {
-    name "Defence"
-    units 4
-    popularity 0
-    start true
-  }
-  demand {
-    name "Flights"
-    units 7
-    popularity 0
-    start true
-  }
-  demand {
-    name "Gadgets"
-    units 5
-    popularity 0
-    start true
-  }
-  demand {
-    name "Food"
-    units 3
-    popularity 0
-    start true
-  }
-  demand {
-    name "Freight"
-    units 12
-    popularity 0
-    start true
-  }
-  demand {
-    name "Cars"
-    units 25
-    popularity 0
-    start true
-  }
-  demand {
-    name "Heating"
-    units 45
-    popularity 0
-    start true
-  }
-  demand {
-    name "Stuff"
-    units 48
-    popularity 0
-    start true
-  }
+  2.times do
+    demand {
+      name "Defence"
+      units 4
+      popularity 0
+      start true
+    }
+    demand {
+      name "Flights"
+      units 7
+      popularity 0
+      start true
+    }
+    demand {
+      name "Gadgets"
+      units 5
+      popularity 0
+      start true
+    }
+    demand {
+      name "Food"
+      units 3
+      popularity 0
+      start true
+    }
+    demand {
+      name "Freight"
+      units 12
+      popularity 0
+      start true
+    }
+    demand {
+      name "Cars"
+      units 25
+      popularity 0
+      start true
+    }
+    demand {
+      name "Heating"
+      units 45
+      popularity 0
+      start true
+    }
+    demand {
+      name "Stuff"
+      units 48
+      popularity 0
+      start true
+    }
+  end
   # Replacement demand
   demand {
     name "Defence"
