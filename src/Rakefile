@@ -1,0 +1,32 @@
+$:.unshift File.join(File.dirname(__FILE__),'metacard','lib')
+$:.unshift(File.dirname(__FILE__))
+
+require 'metacard'
+include Metacard
+
+def resource(file)
+   File.join(File.dirname(__FILE__),file)
+end
+
+def write
+  print=Printing.new($game.cards,:resolution=>300)
+  print.write(resource("../pack.pdf"))
+  print.write_fronts(resource("../fronts.pdf"))
+  print.write_backs(resource("../backs.pdf"))
+end
+
+task :default => [:build]
+
+task :build do
+  require 'geometry'
+  require 'definition'
+  require 'cards'
+  write
+end
+
+task :test do  
+  require 'geometry'
+  require 'definition'
+  require 'test_cards'
+  write
+end
