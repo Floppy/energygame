@@ -15,6 +15,16 @@ $game.define_cards {
     land 0
     coast 0
   }
+  supply {
+    name "Nuclear"
+    units 5
+    description "100 years' supply"
+    cost 5
+    land 5
+    coast 0
+    popularity 0
+    start true
+  }
   # Starting demand
   demand {
     name "Stuff"

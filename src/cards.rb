@@ -1,16 +1,29 @@
 $game.define_cards {
   # Fossil Fuels
   fossil {
+    name "Overseas"
+    units 32
+    start true
+  }
+  fossil {
     name "Coal"
     units 30
+    start true
   }
   fossil {
     name "Gas"
     units 48
+    start true
   }
   fossil {
     name "Oil"
     units 44
+    start true
+  }
+  fossil {
+    name "Overseas"
+    units 44
+    start true
   }
   # Sustainable Power
   supply {
@@ -22,24 +35,29 @@ $game.define_cards {
     land 0
     coast 0
   }
-  supply {
-    name "Nuclear"
-    units 5
-    description "100 years' supply"
-    cost 5
-    land 5
-    coast 0
-    popularity 0
-  }
-  supply {
-    name "Nuclear"
-    units 1
-    description "1000 years' supply"
-    cost 1
-    land 1
-    coast 0
-    popularity 0
-  }
+  2.times do 
+    supply {
+      name "Nuclear"
+      units 5
+      description "100 years' supply"
+      cost 5
+      land 5
+      coast 0
+      popularity 0
+      start true
+    }
+  end
+  2.times do 
+    supply {
+      name "Nuclear"
+      units 1
+      description "1000 years' supply"
+      cost 1
+      land 1
+      coast 0
+      popularity 0
+    }
+  end
   supply {
     name "Coal with CCS"
     units 7
