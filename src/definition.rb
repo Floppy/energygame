@@ -34,7 +34,11 @@ $game=Game.new {
              SafeYOffset,
              CardWidth-SafeXOffset,
              CardHeight-SafeYOffset)
-    image ImageList.new(resource("images/back.png")).resize(ContentsWidth,ContentsHeight),:alignment=>:center
+    if start == true
+      image ImageList.new(resource("images/start_back.png")).resize(ContentsWidth,ContentsHeight),:alignment=>:center
+    else
+      image ImageList.new(resource("images/normal_back.png")).resize(ContentsWidth,ContentsHeight),:alignment=>:center
+    end
   }
   card_type(:supply) {
     attr_property :name,:units,:popularity,:land,:start,:description,:cost,:land,:coast
