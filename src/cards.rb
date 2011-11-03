@@ -3,20 +3,14 @@ $game.define_cards {
   fossil {
     name "Coal"
     units 30
-    popularity 0
-    start true
   }
   fossil {
     name "Gas"
     units 48
-    popularity 0
-    start true
   }
   fossil {
     name "Oil"
     units 44
-    popularity 0
-    start true
   }
   # Sustainable Power
   supply {
