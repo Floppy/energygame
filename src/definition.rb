@@ -16,6 +16,14 @@ $game=Game.new {
              ContentR,
              ContentT + TitleHeight)
     bubble
+    text(name,:alignment=>:center) {|drawing| drawing.pointsize=75}
+  }
+  element(:name_with_units) {
+    geometry(ContentL,
+             ContentT,
+             ContentR,
+             ContentT + TitleHeight)
+    bubble
     text("#{name}: #{units}",:alignment=>:center) {|drawing| drawing.pointsize=75}
   }
   element(:description) {
@@ -57,7 +65,7 @@ $game=Game.new {
     def colour
       "forest green"
     end
-    front :frame,:name,:art_front,:description, :popularity
+    front :frame,:name_with_units,:art_front,:description, :popularity
     back :art_back
   }
   card_type(:demand) {
@@ -65,7 +73,7 @@ $game=Game.new {
     def colour
       "red"
     end
-    front :frame,:name,:art_front,:description, :popularity
+    front :frame,:name_with_units,:art_front,:description, :popularity
     back :art_back
   }
   card_type(:fossil) {
@@ -73,7 +81,15 @@ $game=Game.new {
     def colour
       "black"
     end
-    front :frame,:name,:art_front
+    front :frame,:name_with_units,:art_front
+    back :art_back
+  }
+  card_type(:blackout) {
+    attr_property :name, :popularity, :start
+    def colour
+      "black"
+    end
+    front :frame,:name,:popularity
     back :art_back
   }
 }

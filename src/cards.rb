@@ -268,4 +268,11 @@ $game.define_cards {
     popularity -2
     description "High carbon price/tax"
   }
+  # Blackouts
+  10.times do
+    blackout {
+      name "Blackout!"
+      popularity -1
+    }
+  end
 }
