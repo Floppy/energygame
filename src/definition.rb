@@ -1,58 +1,79 @@
 $game=Game.new {
-  blank(CardWidth,CardHeight){
+  blank(Width,Height) {
     self.background_color='white'
     self.density="300"
   }
   element(:frame) {
-    geometry(SafeXOffset,
-             SafeYOffset,
-             CardWidth-SafeXOffset,
-             CardHeight-SafeYOffset)
-    colours = {
-      :supply => "forest green",
-      :demand => "red",
-      :fossil => "black"
-    }
-    bubble colours[:supply]
+    geometry(0,
+             0,
+             Width,
+             Height)
+    bubble colour
   }
   element(:name) {
-    geometry(ContentsLeft,
-             ContentsTop,ContentsRight,
-             SafeYOffset+ContentsYOffset+TitleHeight)
+    geometry(ContentL,
+             ContentT,
+             ContentR,
+             ContentT + TitleHeight)
     bubble
-    text(name,:alignment=>:center) {|drawing| drawing.pointsize=45}
+    text("#{name}: #{units}",:alignment=>:center) {|drawing| drawing.pointsize=75}
+  }
+  element(:description) {
+    geometry(ContentL,
+             ContentT + TitleHeight + SectionGap + ArtSize + SectionGap,
+             ContentR,
+             ContentT + TitleHeight + SectionGap + ArtSize + SectionGap + DescriptionHeight)
+    bubble
+    text(description||' ',:alignment=>:center) {|drawing| drawing.pointsize=25}
+  }
+  element(:popularity) {
+    geometry(ContentL,
+             ContentT + TitleHeight + SectionGap + ArtSize + SectionGap + DescriptionHeight + SectionGap,
+             ContentR,
+             ContentB)
+    bubble
+    text("Popularity: #{popularity.to_s}",:alignment=>:center) {|drawing| drawing.pointsize=50}
   }
   element(:art_front) {
-    geometry(SafeXOffset+FrameWidth,
-             SafeYOffset+ArtTop,
-             (SafeXOffset+ContentsWidth)-FrameWidth,
-             SafeYOffset+ArtHeight+ContentsWidth)
-    image ImageList.new(resource("images/#{name.downcase.gsub(' ','_')}.png")).resize(ContentsWidth-20,ContentsWidth-20),:alignment=>:center
+    geometry(ContentL,
+             ContentT + TitleHeight + SectionGap,
+             ContentR,
+             ContentT + TitleHeight + SectionGap + ArtSize)
+    image ImageList.new(resource("images/#{name.downcase.gsub(' ','_')}.png")).resize(ContentWidth,ContentWidth),:alignment=>:center
   }
   element(:art_back) {
-    geometry(SafeXOffset,
-             SafeYOffset,
-             CardWidth-SafeXOffset,
-             CardHeight-SafeYOffset)
+    geometry(OriginY + OuterFrameWidth,
+             ContentL,
+             ContentR,
+             Height - (Bleed + OuterFrameWidth))
     if start == true
-      image ImageList.new(resource("images/start_back.png")).resize(ContentsWidth,ContentsHeight),:alignment=>:center
+      image ImageList.new(resource("images/start_back.png")).resize(ContentWidth,ContentHeight),:alignment=>:center
     else
-      image ImageList.new(resource("images/normal_back.png")).resize(ContentsWidth,ContentsHeight),:alignment=>:center
+      image ImageList.new(resource("images/normal_back.png")).resize(ContentWidth,ContentHeight),:alignment=>:center
     end
   }
   card_type(:supply) {
     attr_property :name,:units,:popularity,:land,:start,:description,:cost,:land,:coast
-    front :frame,:art_front,:name
+    def colour
+      "forest green"
+    end
+    front :frame,:name,:art_front,:description, :popularity
     back :art_back
   }
   card_type(:demand) {
     attr_property :name,:units,:popularity,:start,:description
-    front :frame,:art_front,:name
+    def colour
+      "red"
+    end
+    front :frame,:name,:art_front,:description, :popularity
     back :art_back
   }
   card_type(:fossil) {
     attr_property :name,:units,:start
-    front :frame,:art_front,:name
+    def colour
+      "black"
+    end
+    front :frame,:name,:art_front
     back :art_back
   }
 }
